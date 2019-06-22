@@ -1,9 +1,9 @@
-var fs = require("fs");
-
 function Letter (characterString) {
+
     this.characterString = characterString;
     this.placeHolder = "_";
     this.guessStatus = false;
+
     this.checkGuessStatus = function () {
         if (this.guessStatus === true) {
             return this.characterString;
@@ -11,6 +11,7 @@ function Letter (characterString) {
             return this.placeHolder;
         }
     }
+
     this.checkCharacter = function (characterGuess) {
         if (characterGuess === this.characterString) {
             this.guessStatus = true;
@@ -19,7 +20,11 @@ function Letter (characterString) {
             return false;
         }
     }
+
 }
+
+module.exports = Letter;
+
 
 // console.log("Hi");
 // var letterOne = new Letter("c");
