@@ -17,9 +17,8 @@ function Word(chosenWord) {
         var x = "";
         for (var i = 0; i < this.numBlanks; i++) {
             x = x.concat(this.letterObjectArray[i].showCharacter());
-            console.log("hi", this.letterObjectArray[i].showCharacter());
+            x = x.concat(" ");
         }
-        console.log("x: ***", x);
         return x;
     }
     
@@ -31,7 +30,10 @@ function Word(chosenWord) {
 
 };
 
-var gameWord = new Word(chosenWord);
-console.log("gameWord: ", gameWord.showWord());
-
 module.exports = Word;
+
+
+// var gameWord = new Word(chosenWord);
+// console.log("gameWord.showWord(): ", gameWord.showWord());
+// gameWord.makeGuess("b");
+// console.log("gameWord.showWord(): ", gameWord.showWord());

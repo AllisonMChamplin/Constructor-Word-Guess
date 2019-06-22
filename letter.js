@@ -15,9 +15,6 @@ function Letter (characterString) {
     this.checkCharacter = function (characterGuess) {
         if (characterGuess === this.characterString) {
             this.guessedStatus = true;
-            return true;
-        } else {
-            return false;
         }
     }
 
