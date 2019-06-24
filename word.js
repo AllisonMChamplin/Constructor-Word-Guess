@@ -3,13 +3,12 @@ var Letter = require("./letter");
 
 function Word(chosenWord) {
 
-
     // console.log("hi Word constructor");
     this.lettersInChosenWord = chosenWord.split("");
     this.numBlanks = this.lettersInChosenWord.length;
     this.numGuesses = this.lettersInChosenWord.length;
     this.userGuesses = [];
-    this.userWrongGuesses = [];
+    this.correctGuessTotal = 0;
     this.letterObjectArray = [];
 
     for (var i = 0; i < this.numBlanks; i++) {
@@ -28,7 +27,7 @@ function Word(chosenWord) {
 
     this.makeGuess = function (guess) {
         var letterFoundCount = 0;
-        // console.log("1. TRUE OR FALSE? ", this.userGuesses.includes(guess.toLowerCase()));
+        var tempSelf = this;
 
         // Check if key pressed is a letter
         if (guess.toUpperCase() != guess.toLowerCase() && guess.length === 1) {
@@ -36,12 +35,7 @@ function Word(chosenWord) {
             // Check if user already guessed the letter
             if (!this.userGuesses.includes(guess.toLowerCase())) {
 
-                // console.log("guess array: ", this.userGuesses);
-                // console.log("2. TRUE OR FALSE? ", this.userGuesses.includes(guess.toLowerCase()));
-
-                // Add the letter to the guessed array
                 this.userGuesses.push(guess.toLowerCase());
-                // Reset letterFound to false
                 var letterFound = false;
 
                 // Check each letter of the word against the guess
@@ -58,9 +52,10 @@ function Word(chosenWord) {
 
                 if (letterFound === true) {
                     console.log("\n *** CORRECT! *** \n");
-                    // console.log("letterFound", letterFound);
+                    this.correctGuessTotal++;
                 } else {
                     console.log("\n *** INCORRECT! *** \n");
+                    this.numGuesses--;
                 }
 
                 console.log(this.showWord());
@@ -87,7 +82,13 @@ function Word(chosenWord) {
         // console.log("numGuesses", temp.numGuesses);
 
         if (temp.numGuesses === 0) {
-            console.log("GAME OVER GUESSES = 0");
+            console.log("GAME OVER! YOU ARE OUT OF GUESSES = 0");
+            lossCounter++;
+            console.log("Your score: " + winCounter + " wins, " + lossCounter + " losses.");
+        } else if (this.userCorrectGuesses === this.numBlanks) {
+            // HERE CHECK IF WORD IS FULLY GUESSED
+            console.log("YOU WIN!");
+            winCounter++;
         } else {
             // console.log("do the Guess");
             inquirer.prompt([
