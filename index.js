@@ -13,6 +13,7 @@ function startGame() {
     // Solution is chosen randomly from wordsList.
     // var numGuesses = gameWordObject.numBlanks;
     chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+    console.log("Word: ", chosenWord);
     // Construct the Word object for chosenWord
     var gameWordObject = new Word(chosenWord);
     // var numBlanks = gameWordObject.letterObjectArray.length;
