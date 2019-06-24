@@ -1,4 +1,4 @@
-var inquirer = require("inquirer");
+
 var Word = require("./word");
 var wordsList = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
     "uranus", "neptune", "pluto"];
@@ -11,37 +11,21 @@ var gameTotal = 0;
 function startGame() {
 
     // Solution is chosen randomly from wordsList.
+    // var numGuesses = gameWordObject.numBlanks;
     chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
     // Construct the Word object for chosenWord
     var gameWordObject = new Word(chosenWord);
-    var numBlanks = gameWordObject.letterObjectArray.length;
-    var numGuesses = gameWordObject.numBlanks;
-    console.log("numGuesses: ", numGuesses);
-    var wrongGuesses = [];
+    // var numBlanks = gameWordObject.letterObjectArray.length;
+    // console.log("numGuesses: ", numGuesses);
+    // var wrongGuesses = [];
+    gameWordObject.getGuess();
 
-    function getGuess(gameWordObject) {
-        console.log("word: ", chosenWord);
-        inquirer.prompt([
-            {
-                name: "guess",
-                message: "Guess a letter:"
-            }
-        ]).then(function (answers) {
-            var guess = answers.guess;
-            gameWordObject.makeGuess(guess);
-            console.log(gameWordObject.showWord());
-            numGuesses = numGuesses - 1;
-
-            if (numGuesses > 0) {
-                getGuess(gameWordObject);
-            }
-        });
-    }
-
-    getGuess(gameWordObject);
-    console.log("here");
 }
-
 
 startGame();
 
+// else {
+//     // ..then we add the letter to the list of wrong letters, and we subtract one of the guesses.
+//     wrongGuesses.push(letter);
+//     numGuesses--;
+//   }
