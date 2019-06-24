@@ -80,16 +80,17 @@ function Word(chosenWord) {
         // console.log("GetGuess ");
         var temp = this;
         // console.log("numGuesses", temp.numGuesses);
-
-        if (temp.numGuesses === 0) {
-            console.log("GAME OVER! YOU ARE OUT OF GUESSES = 0");
-            lossCounter++;
-            console.log("Your score: " + winCounter + " wins, " + lossCounter + " losses.");
-        } else if (this.userCorrectGuesses === this.numBlanks) {
+        if (this.userGuesses.length === this.numBlanks) {
             // HERE CHECK IF WORD IS FULLY GUESSED
             console.log("YOU WIN!");
             winCounter++;
-        } else {
+            endRound();
+        } else if (temp.numGuesses === 0) {
+            console.log("GAME OVER! YOU ARE OUT OF GUESSES = 0");
+            lossCounter++;
+            console.log("Your score: " + winCounter + " wins, " + lossCounter + " losses.");
+            endRound();
+        }  else {
             // console.log("do the Guess");
             inquirer.prompt([
                 {
