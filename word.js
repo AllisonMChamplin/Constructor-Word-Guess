@@ -1,6 +1,6 @@
 var inquirer = require("inquirer");
 var Letter = require("./letter");
-
+var divider = "\n\n-------------------------------------------\n\n";
 function Word(chosenWord) {
 
     // console.log("hi Word constructor");
@@ -53,6 +53,7 @@ function Word(chosenWord) {
                 if (letterFound === true) {
                     console.log("\n *** CORRECT! *** \n");
                     this.correctGuessTotal++;
+                    // console.log("correctGuessTotal / numBlanks: ", this.correctGuessTotal + " / " + this.numBlanks);
                 } else {
                     console.log("\n *** INCORRECT! *** \n");
                     this.numGuesses--;
@@ -80,18 +81,24 @@ function Word(chosenWord) {
         // console.log("GetGuess ");
         var temp = this;
         // console.log("numGuesses", temp.numGuesses);
-        if (this.userGuesses.length === this.numBlanks) {
+        if (this.correctGuessTotal === this.numBlanks) {
             // HERE CHECK IF WORD IS FULLY GUESSED
             console.log("YOU WIN!");
             winCounter++;
+            console.log("Your score: " + winCounter + " wins, " + lossCounter + " losses.");
             endRound();
         } else if (temp.numGuesses === 0) {
-            console.log("GAME OVER! YOU ARE OUT OF GUESSES = 0");
+            console.log("GAME OVER! You are out of guesses :(");
             lossCounter++;
             console.log("Your score: " + winCounter + " wins, " + lossCounter + " losses.");
             endRound();
         }  else {
             // console.log("do the Guess");
+    console.log("\n");
+
+            console.log(this.showWord());
+    console.log("\n");
+            
             inquirer.prompt([
                 {
                     name: "guess",

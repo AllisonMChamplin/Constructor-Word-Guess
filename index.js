@@ -33,14 +33,23 @@ var wordsList = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
 function startGame() {
     // Solution is chosen randomly from wordsList.
     chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
-    console.log("\n Word: ", chosenWord + "\n");
+    console.log("\n");
+    console.log(" * * * * * * * * * * * * * * * * * * *");
+    // console.log("\n");
+    console.log("  Welcome to Node Galatic Word Guess!  ");
+    console.log(" Can you guess the word? Good luck!")
+    // console.log("\n");
+    console.log(" * * * * * * * * * * * * * * * * * * *");
+    console.log("\n");
+    // console.log("\n Word: ", chosenWord + "\n");
     // Construct the Word object for chosenWord
     var gameWordObject = new Word(chosenWord);
 
     if (firstGame === false) {
-    console.log("\n Your score: " + winCounter + " wins, " + lossCounter + " losses. \n");
+    console.log("\n Your score: " + winCounter + " wins, " + lossCounter + " losses. \n\n");
     }
     gameWordObject.getGuess();
+
 }
 
 startGame();
