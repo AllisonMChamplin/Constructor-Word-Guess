@@ -13,7 +13,7 @@ global.endRound = function () {
             name: "game"
         }
     ]).then(function (answers) {
-        console.log("***** Answers: ", answers);
+        // console.log("***** Answers: ", answers);
         if (answers.game === "Yes") {
             startGame();
         } else {
@@ -35,19 +35,19 @@ function startGame() {
     chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
     console.log("\n");
     console.log(" * * * * * * * * * * * * * * * * * * *");
-    // console.log("\n");
-    console.log("  Welcome to Node Galatic Word Guess!  ");
-    console.log(" Can you guess the word? Good luck!")
-    // console.log("\n");
-    console.log(" * * * * * * * * * * * * * * * * * * *");
+    console.log("  WELCOME TO NODE GALACTIC WORD GUESS!  ");
     console.log("\n");
-    // console.log("\n Word: ", chosenWord + "\n");
-    // Construct the Word object for chosenWord
+    // console.log(" * * * * * * * * * * * * * * * * * * *");
+    console.log("  Can you guess the word? Good luck!");
+    console.log(" * * * * * * * * * * * * * * * * * * *");
+    // console.log("\n");
+
     var gameWordObject = new Word(chosenWord);
 
     if (firstGame === false) {
     console.log("\n Your score: " + winCounter + " wins, " + lossCounter + " losses. \n\n");
     }
+
     gameWordObject.getGuess();
 
 }
