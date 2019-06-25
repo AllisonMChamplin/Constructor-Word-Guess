@@ -3,7 +3,6 @@ var Letter = require("./letter");
 var divider = "\r\r-------------------------------------------\r\r";
 function Word(chosenWord) {
 
-    // console.log("hi Word constructor");
     this.lettersInChosenWord = chosenWord.split("");
     this.numBlanks = this.lettersInChosenWord.length;
     this.numGuesses = this.lettersInChosenWord.length;
@@ -51,11 +50,13 @@ function Word(chosenWord) {
                 }
 
                 if (letterFound === true) {
+                    console.log("\n Guesses: ", this.userGuesses.join("  "));
                     console.log("\n CORRECT!");
-                    // console.log("correctGuessTotal: ", this.correctGuessTotal);
+                    console.log("\n");
                 } else {
+                    console.log("\n Guesses: ", this.userGuesses.join("  "));
                     console.log("\n INCORRECT!");
-                    console.log("Wrong Guesses: ", this.userGuesses);
+                    console.log("\n");
                     this.numGuesses--;
                 }
 
@@ -94,15 +95,15 @@ function Word(chosenWord) {
             console.log("* * * * * YOU WIN! * * * * * ");
             console.log("\r");
             winCounter++;
-            console.log(" Your score: " + winCounter + " wins, " + lossCounter + " losses.");
+            console.log(" Wins: " + winCounter + " Losses: " + lossCounter);
             console.log("\r");
             endRound();
         } else if (temp.numGuesses === 0) {
             console.log("\r");
-            console.log("GAME OVER! \r You are out of guesses :(");
+            console.log("GAME OVER! \r ): You are out of guesses :(");
             console.log("\r");
             lossCounter++;
-            console.log(" Your score: " + winCounter + " wins, " + lossCounter + " losses.");
+            console.log(" Wins: " + winCounter + " Losses: " + lossCounter);
             console.log("\r");
             endRound();
         } else {
@@ -114,7 +115,7 @@ function Word(chosenWord) {
             inquirer.prompt([
                 {
                     name: "guess",
-                    message: "Guess a letter:"
+                    message: "Guess a letter: "
                 }
             ]).then(function (answers) {
                 // console.log("Guesses left: ", temp.numGuesses);

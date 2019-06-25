@@ -8,7 +8,7 @@ global.endRound = function () {
     inquirer.prompt([
         {
             type: "list",
-            message: "Play again?",
+            message: "Would you like to play again?",
             choices: ["Yes", "Exit"],
             name: "game"
         }
@@ -28,7 +28,7 @@ global.endRound = function () {
 
 var Word = require("./word");
 var wordsList = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
-    "uranus", "neptune", "pluto"];
+    "uranus", "neptune", "pluto", "intersteller", "supernova"];
 
 function startGame() {
     // Solution is chosen randomly from wordsList.
@@ -45,7 +45,7 @@ function startGame() {
     var gameWordObject = new Word(chosenWord);
 
     if (firstGame === false) {
-    console.log("\n Your score: " + winCounter + " wins, " + lossCounter + " losses. \n\n");
+        console.log("\n Your score: " + winCounter + " wins, " + lossCounter + " losses. \n\n");
     }
 
     gameWordObject.getGuess();
